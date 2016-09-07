@@ -17,7 +17,7 @@ to serve up John Donne's Ecstasy, which I know you want to do.
     help = "The interface to listen on. Default is localhost."
     parser.add_option('--iface', help=help, default='localhost')
     help = "The number of seconds between sending bytes."
-    parser.add_option('--delay', type='float', help=help, default=.7)
+    parser.add_option('--delay', type='float', help=help, default=.1)
     help = "The number of bytes to send at a time."
     parser.add_option('--num-bytes', type='int', help=help, default=10)
     options, args = parser.parse_args()
@@ -54,7 +54,7 @@ def serve(listen_socket, poetry_file, num_bytes, delay):
         send_poetry(sock, poetry_file, num_bytes, delay)
 
 def main():
-    options, poetry_file= parse_args()
+    options, poetry_file = parse_args()
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     sock.bind((options.iface, options.port or 0))
