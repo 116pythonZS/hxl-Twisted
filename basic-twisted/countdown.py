@@ -1,8 +1,6 @@
 
 class Countdown(object):
-
     counter = 5
-
     def count(self):
         if self.counter == 0:
             reactor.stop()
